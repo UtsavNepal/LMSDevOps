@@ -1,0 +1,8 @@
+Internal Server Error: /api/transactions/
+"GET /api/transactions/ HTTP/1.1" 500 84
+Internal Server Error: /api/transactions/1/
+"GET /api/transactions/1/ HTTP/1.1" 500 88
+Internal Server Error: /api/transactions/
+"GET /api/transactions/ HTTP/1.1" 500 84
+Watching for file changes with StatReloader
+C:\Users\pradatta\Desktop\LMS\LMS\LMS\settings.py changed, reloading.

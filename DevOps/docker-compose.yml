@@ -1,0 +1,67 @@
+
+
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: lmsdb
+      POSTGRES_USER: lmsuser
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - lms-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lmsuser -d lmsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: ..
+      dockerfile: DevOps/backend.Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_ENGINE=django.db.backends.postgresql
+      - DB_NAME=lmsdb
+      - DB_USER=lmsuser
+      - DB_PASSWORD=1234
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DOCKERIZED=true
+    volumes:
+      - type: volume
+        source: static_volume
+        target: /API-PROJECT/staticfiles
+      - type: volume
+        source: media_volume
+        target: /API-PROJECT/media
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - lms-network
+  frontend:
+    build:
+      context: ..
+      dockerfile: ./DevOps/frontend.Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - lms-network
+
+volumes:
+  postgres_data:
+    driver: local
+  static_volume:
+    driver: local
+  media_volume:
+    driver: local
+
+networks:
+  lms-network:
+    driver: bridge
