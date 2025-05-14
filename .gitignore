@@ -1,0 +1,35 @@
+# === Python / Django (LMS Folder) ===
+LMS/__pycache__/
+LMS/*.py[cod]
+LMS/*.sqlite3
+LMS/*.log
+LMS/.env
+LMS/media/
+LMS/staticfiles/
+
+# === React (reactfrontend Folder) ===
+reactfrontend/node_modules/
+reactfrontend/npm-debug.log*
+reactfrontend/yarn-debug.log*
+reactfrontend/yarn-error.log*
+reactfrontend/build/
+reactfrontend/dist/
+
+# === Docker ===
+*.pid
+*.bak
+*.swp
+docker-compose.override.yml
+
+# === VS Code settings ===
+.vscode/
+*.code-workspace
+
+# === Operating System files ===
+.DS_Store
+Thumbs.db
+
+# === Misc ===
+.env.local
+.env.development
+.env.production
