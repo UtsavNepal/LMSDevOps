@@ -1,0 +1,19 @@
+
+
+curl ifconfig.me
+202.51.88.121
+
+
+utsav@Desktop-Utsav:/mnt/c/Users/NWV/Desktop/Full Code/LMSDevOps/DevOps$ nslookup utsav.kutumbatech.com.np
+Server:         10.255.255.254
+Address:        10.255.255.254#53
+
+Non-authoritative answer:
+Name:   utsav.kutumbatech.com.np
+Address: 110.34.2.30
+
+1. Verify DNS is Pointing Correctly
+Run this to confirm your domain resolves to your server’s IP (202.51.88.121):
+
+bash
+nslookup utsav.kutumbatech.com.np

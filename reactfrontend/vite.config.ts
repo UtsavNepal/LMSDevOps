@@ -8,7 +8,7 @@ export default defineConfig({
     'process.env': process.env
   },
   build: {
-    assetsInlineLimit: 0, // Ensure files aren't inlined
+    assetsInlineLimit: 0,
     rollupOptions: {
       output: {
         assetFileNames: 'assets/[name].[hash][extname]',
